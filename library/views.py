@@ -18,18 +18,6 @@ import requests
 
 
 # Create your views here.
-# def sign_up(request):
-#     if request.method == "POST":
-#         fm = UserCreationForm(request.POST)
-#         if fm.is_valid():
-#             fm.save()
-#     else:
-#         fm = UserCreationForm()
-#     return render(request , 'library/adminsignup.html', {'form':fm})
-
-# if requests.session.get('name'):
-#     print(",.............,,,,,,,,,,,,,,,,,...........yes")
-# print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",requests.session.get('name'))
 
 def index(request):
     return home(request)
@@ -92,11 +80,8 @@ def addbook(request):
     form = forms.BookForm()
     if request.method=='POST':
         form = forms.BookForm(request.POST)
-        # bname = form.cleaned_data['bookname']
-        # print("===============>",bname)
         if form.is_valid():
             user=form.save()
-            # return render(request, 'library/book_added.html')
     return render(request, 'library/add_book.html', {'form': form})
 
 
@@ -118,26 +103,20 @@ def issue_book(request):
         form = forms.IssueBookForm(request.POST)
         sname = form.data['studentname']
         books = models.Book.objects.values_list('bookname')
-        # print("books======================>", books)
         books = list(books)
-        # print("books======================>", books)
         lst = []
         for i in books:
             j = list(i)
             lst.append(j)
-        # print("lst ======================>", lst)
         j = form.data['bookname']
         j = [j]
-        # print("j===========>", j)
         if j not in lst:
             messages.success(request, "*Out of stock !!")
-            # print("Not present===============>",j)
                 
         else:
             if form.is_valid():
                 form.save()
                 messages.success(request, "*Books issued successfuly to")
-                # print("book is present===============>",j)
                     
          
     return render(request, 'library/issue_book.html', {'form': form, 'sname': sname})
@@ -159,18 +138,9 @@ def issued_book(request):
         else:
             lst1.append(0)
     print("============",lst1)
-    # print(fine(lst1))
-    # charge = fine(lst1)
     bl = {'books':books, 'lst1':lst1}
     return render(request, 'library/issued_book.html', bl)
 
-# def fine(lst):
-#     for i in lst:
-#         # print("fine ============",i)
-#         # print(type(i))
-#         # print(i)
-#         return i
-        
 
 def update_issued(request, id):
     if request.method == 'POST':
@@ -182,7 +152,6 @@ def update_issued(request, id):
     else:
         book = models.IssueBook.objects.get(pk=id)
         form = IssueBookForm(instance=book)
-    # print("======================",request)
     return render(request, 'library/update_issued_book.html', {'form':form})
 
 
