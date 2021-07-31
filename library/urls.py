@@ -1,4 +1,4 @@
-"""library_management_system URL Configuration
+"""library URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -15,21 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from library import views
-from library.middleware import authmiddleware
+from django.urls.conf import include
+from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/', views.sign_up, name='signup'),
-    path('', views.index, name='index'),
+    path('', views.home, name='home'),
+    path('about/', views.about_us, name='aboutus'),
+    path('contact/', views.contact_us, name='contactus'),
     path('login/', views.user_login, name='login'),
-    path('home/', views.home, name='home'),
+    path('adminlogin/', views.admin_login, name='adminlogin'),
     path('logout/', views.user_logout, name='logout'),
-    path('addbook/', authmiddleware(views.addbook), name='addbook'),
-    path('viewbooks/', authmiddleware(views.view_books), name='viewbooks'),
+    path('addbook/', views.addbook, name='addbook'),
+    path('viewbooks/', views.view_books, name='viewbooks'),
     path('delete/<int:id>', views.delete, name='deletedata'),
-    path('issuebook/', authmiddleware(views.issue_book), name='issuebook'),
-    path('issuedbook/', authmiddleware(views.issued_book), name= 'issuedbook'),
+    path('issuebook/', views.issue_book, name='issuebook'),
+    path('issuedbook/', views.issued_book, name= 'issuedbook'),
     path('updateissued/<int:id>', views.update_issued, name='updateissueddata'),
     path('deleteissued/<int:id>', views.delete_issued, name='deleteissueddata'),
+    path('api/', include('api.urls')),
 ]
