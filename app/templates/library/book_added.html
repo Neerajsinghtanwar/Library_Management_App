@@ -1,0 +1,11 @@
+{% extends 'library/base.html' %}
+{% block title %}Add Books{% endblock title %}
+
+{% block body %}
+    <center><h4>BOOK ADDED SUCCESSFULY</h4></center>
+    
+    <hr class="my-4">
+    <div class="options" style="text-align:center">
+    <a href="{% url 'addbook' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Click here to add more Book</a><br><br>
+    <a href="{% url 'viewbooks' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Click here to view all Books</a><br><br>
+{% endblock body %}

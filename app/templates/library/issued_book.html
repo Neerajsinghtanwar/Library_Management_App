@@ -1,0 +1,84 @@
+{% extends 'library/base.html' %}
+{% block title %}Issued Books{% endblock title %}
+
+{% block style %}
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.column1 {
+  float: left;
+  line-height: 36px;
+  width: 100%;
+}
+{% endblock style %}
+
+{% block body %}
+<center><h4>All Books</h4></center>
+    
+{% if books%}
+<div class="column1">
+<table class="redTable">
+<thead>
+<tr>
+<th>ID</th>
+<th>Student Name</th>
+<th>Roll no.</th>
+<th>Book Name[id]</th>
+<th>Date</th>
+<th>Submit Date</th>
+<th>Fine</th>
+<th>Action</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td colspan="8">
+<div class="links"></div>
+</td>
+</tr>
+</tfoot>
+<tbody>
+{% for book in books %}
+    <tr>
+    <td>{{book.id}}</td>
+    <td>{{book.studentname}}</td>
+    <td>{{book.rollno}}</td>
+    <td>{{book.book_detail}}</td>
+    <td>{{book.issuedate}}</td>        
+    <td>{{book.submitdate}}</td>
+    <td>{{book.fine}}</td>
+    <td>
+    <a href="{% url 'updateissueddata' book.id %}" class="btn btn-info btn-sm active" >Update</a>
+    
+    <form action="{% url 'deleteissueddata' book.id %}" method="POST" class="d-inline">
+    {% csrf_token %}
+      <input type="submit" class="btn btn-danger btn-sm active" value="Delete">
+    </form>
+    </td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+<br>
+</div>
+{%else%}
+<h1>Have 0 book</h1>
+{%endif%}
+</div>
+<center><div>
+  <a href="{% url 'home' %}" class="btn btn-primary ">Back to Home</a>
+</div></center>
+{% endblock body %}

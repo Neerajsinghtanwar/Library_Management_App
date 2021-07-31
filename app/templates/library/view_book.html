@@ -1,0 +1,71 @@
+{% extends 'library/base.html' %}
+{% block title %}Books{% endblock title %}
+
+{% block style %}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+{% endblock style %}
+
+{% block body %}
+<center><h4>All Books</h4></center>
+<div class='container'>
+{% if books%}
+<table class="redTable">
+<thead>
+<tr>
+<th>ID</th>
+<th>Book Name</th>
+<th>Author</th>
+<th>Category</th>
+<th>Quantity</th>
+<th>Action</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td colspan="6" rowspan="6">
+<div class="links"></div>
+</td>
+</tr>
+</tfoot>
+<tbody>
+{% for book in books %}
+    <tr>
+    <td>{{book.id}}</td>
+    <td>{{book.bookname}}</td>
+    <td>{{book.author}}</td>
+    <td>{{book.category}}</td>
+    <td>{{book.quantity}}</td>
+    <td>
+    <form action="{% url 'deletedata' book.id %}" method="POST" class="d-inline">
+    {% csrf_token %}
+      <input type="submit" class="btn btn-danger" value="Delete">
+    </form>
+    </td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+{%else%}
+<h1>Have 0 book</h1>
+{%endif%}
+<br><br>
+</div>
+</div>
+<center><div>
+  <a href="{% url 'home' %}" class="btn btn-primary ">Back to Home</a>
+</div></center>
+{% endblock body %}

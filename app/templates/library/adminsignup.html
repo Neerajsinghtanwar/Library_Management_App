@@ -1,0 +1,18 @@
+{% extends 'library/base.html' %}
+{% block title %}User Registeration{% endblock title %}
+{% block body %}
+<br>
+<form action="" method="post" novalidate>
+		{% csrf_token %}
+		{% for fm in form %}
+			{{fm.label_tag}} {{fm}} {{fm.errors|striptags}} <br> <br>
+		{% endfor %} 
+		<input type="submit" value="Submit"> 
+	</form><br>
+	{% if messages %}
+	{% for message in messages %}
+		{{message}}
+	{% endfor %}
+	{% endif %}
+    <a href="{% url 'login'%}">Login</a>
+{% endblock body %}

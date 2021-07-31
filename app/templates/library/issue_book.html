@@ -1,0 +1,31 @@
+{% extends 'library/base.html' %}
+{% block title %}Issue Book{% endblock title %}
+
+{% block body %}
+<center><h2>ADD BOOKS IN LIBRARY</h2></center>
+    
+    <hr class="my-4">
+    <div>
+    <a href="{% url 'home' %}" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"><-- Back</a>
+    </div>
+    <br>
+    <center>{% if messages %}
+        {% for message in messages %}
+        {{message}} {{name}}
+        {% endfor %}
+    {% endif %}</center>
+    <center><form class="container" action="" method="POST">
+        {% csrf_token %}
+        
+        {% for field in form %}
+        <div class="form-group">
+            <label class="control-label col-xs-4">{{ field.label_tag }}</label>
+            <div class="col-xs-8">
+            {{ field }} 
+            </div><br>
+        </div>
+        {% endfor %}
+        <input type="submit" class="btn btn-success btn-sm active" value="Submit">
+    </form></center>
+    <br><br>
+{% endblock body %}

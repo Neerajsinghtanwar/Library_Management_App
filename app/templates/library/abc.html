@@ -1,0 +1,50 @@
+{% extends 'library/base.html' %}
+{% block title %}Books{% endblock title %}
+
+{% block style %}
+
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+{% endblock style %}
+
+{% block body %}
+<center><h4>All Books</h4></center>
+    
+{% if books%}
+<table class="redTable">
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+</td>
+</tr>
+</tfoot>
+<tbody>
+{% for book in books %}
+    <tr>
+    <td>{{book}}</td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+{%else%}
+<h1>Have 0 book</h1>
+{%endif%}
+<br><br>
+</div>
+<center><div>
+  <a href="{% url 'home' %}" class="btn btn-primary ">Back to Home</a>
+</div></center>
+{% endblock body %}
