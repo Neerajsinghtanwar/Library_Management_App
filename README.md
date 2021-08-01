@@ -22,8 +22,8 @@ This App/Api manage the complete work of library. It can add books to library, s
 ### Run Server
 	python manage.py runserver
 	open localhost:8000 in your browser
-## Authors
 
+### Authors
 - [Neerajsinghtanwar](https://github.com/Neerajsinghtanwar/Library_Management_App_and_Api-Django-.git)
 
   
