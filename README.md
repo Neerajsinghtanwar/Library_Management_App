@@ -8,20 +8,6 @@ This App/Api manage the complete work of library. It can add books to library, s
 ### Install Pip
 	sudo apt-get install python-pip
 
-### SetUp VirtualEnv
-
-	pip install virtualenv
-	mkdir ~/.virtualenvs
-	pip install virtualenvwrapper
-	export Projects=~/.virtualenvs
-	
-	Add this line to the end of ~/.bashrc so that the virtualenvwrapper commands are loaded.
-	. /usr/local/bin/virtualenvwrapper.sh
-
-### Activate VirtualEnv
-	mkvirtualenv Library
-	workon Library
-
 ### Clone library repository
 	git clone git@github.com:Neerajsinghtanwar/Library_Management_App_and_Api-Django-
 
