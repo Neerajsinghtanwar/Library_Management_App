@@ -9,7 +9,7 @@ This App/Api manage the complete work of library. It can add books to library, s
 	sudo apt-get install python-pip
 
 ### Clone library repository
-	git clone git@github.com:Neerajsinghtanwar/Library_Management_App_and_Api-Django-
+	git clone git@github.com:Neerajsinghtanwar/Library_Management_App_and_Api-Django-.git
 
 ### Install Requirements
 	pip install -r requirements.txt

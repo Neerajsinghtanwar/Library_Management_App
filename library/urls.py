@@ -31,7 +31,7 @@ urlpatterns = [
     path('viewbooks/', views.view_books, name='viewbooks'),
     path('delete/<int:id>', views.delete, name='deletedata'),
     path('issuebook/', views.issue_book, name='issuebook'),
-    path('issuedbook/', views.issued_book, name= 'issuedbook'),
+    path('viewissuedbooks/', views.issued_book, name= 'viewissuedbooks'),
     path('updateissued/<int:id>', views.update_issued, name='updateissueddata'),
     path('deleteissued/<int:id>', views.delete_issued, name='deleteissueddata'),
     path('api/', include('api.urls')),
