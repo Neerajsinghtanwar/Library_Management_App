@@ -17,7 +17,7 @@ This App/Api manage the complete work of library. It can add books to library, s
 ### Set Up MySQL
 	sudo apt-get install libmysqlclient-dev
 	sudo apt-get install mysql-server
-	mysql -u root -p --execute "create database library; grant all on library.* to library@localhost identified by 'Asdf@1234';"
+	mysql -u root -p --execute "create database library; grant all on library.* to root@localhost identified by 'Asdf@1234';"
 
 ### Run Server
 	python manage.py runserver
