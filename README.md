@@ -23,6 +23,10 @@ This App/Api manage the complete work of library. It can add books to library, s
 	python manage.py runserver
 	open localhost:8000 in your browser
 
+### Set Database (Make Sure you are in directory same as manage.py)
+    python manage.py makemigrations
+    python manage.py migrate
+
 ### Authors
 - [Neerajsinghtanwar](https://github.com/Neerajsinghtanwar/Library_Management_App_and_Api-Django-.git)
 
